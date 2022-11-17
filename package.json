@@ -7,7 +7,7 @@
     "file",
     "manager"
   ],
-  "author": "Mohammad Ashrafuddin Ferdousi <mashferd@gmail.com>",
+  "author": "Mohammad Ashrafuddin Ferdousi <it.codeperl@gmail.com>",
   "private": false,
   "license": "MIT",
   "main": "src/init.js",
@@ -37,5 +37,13 @@
     "prettier": "^2.5.1",
     "sass": "^1.49.7",
     "vite": "^3.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeperl/vue-laravel-file-manager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/codeperl/vue-laravel-file-manager/issues"
+  },
+  "homepage": "https://github.com/codeperl/vue-laravel-file-manager#readme"
 }
