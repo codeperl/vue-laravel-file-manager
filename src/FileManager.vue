@@ -50,6 +50,7 @@ import ContextMenu from './components/blocks/ContextMenu.vue';
 import NotificationBlock from './components/blocks/NotificationBlock.vue';
 // Mixins
 import translate from './mixins/translate';
+import localstore from "./mixins/localstore";
 
 export default {
     name: 'FileManager',
@@ -86,6 +87,11 @@ export default {
     created() {
         // manual settings
         this.$store.commit('fm/settings/manualSettings', this.settings);
+        /**
+         * FIXME: Manual settings set the vuex settings store but to initiate axios, that value is not available
+         * in js files, I am using localstorage to manage those settings.
+         */
+        localstore.setStorage(localstore.axiosSettingType, this.settings);
 
         // initiate Axios
         this.$store.commit('fm/settings/initAxiosSettings');

@@ -1,6 +1,7 @@
 /* eslint-disable max-len,prefer-destructuring,object-curly-newline */
 import GET from '../http/get';
 import POST from '../http/post';
+import localstore from "../mixins/localstore";
 
 export default {
     /**
@@ -560,6 +561,8 @@ export default {
             commit('tree/cleanTree');
             commit('tree/clearTempArray');
         }
+
+        localstore.removeStorage(localstore.axiosSettingType);
 
         commit('resetState');
     },
