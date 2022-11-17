@@ -131,8 +131,8 @@ export default {
             let settings = localstore.getStorage(localstore.axiosSettingType);
 
             if(settings) {
-                if(settings.baseURL)  axios.defaults.baseURL = settings.baseURL;
-                if(settings.headers)  axios.defaults.headers = settings.headers;
+                if(settings.baseURL)  HTTP.defaults.baseURL = settings.baseURL;
+                if(settings.headers)  HTTP.defaults.headers = settings.headers;
             }
         },
 
