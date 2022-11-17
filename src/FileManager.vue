@@ -120,8 +120,8 @@ export default {
          * Axios default config
          */
         setAxiosConfig() {
-            HTTP.defaults.baseURL = this.$store.getters['fm/settings/baseUrl'];
-            HTTP.defaults.headers = this.$store.getters['fm/settings/headers'];
+            // HTTP.defaults.baseURL = this.$store.getters['fm/settings/baseUrl'];
+            // HTTP.defaults.headers = this.$store.getters['fm/settings/headers'];
         },
 
         /**
