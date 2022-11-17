@@ -129,15 +129,11 @@ export default {
             // HTTP.defaults.baseURL = this.$store.getters['fm/settings/baseUrl'];
             // HTTP.defaults.headers = this.$store.getters['fm/settings/headers'];
             let settings = localstore.getStorage(localstore.axiosSettingType);
-            let obj = {};
 
             if(settings) {
-                if(settings.data.baseURL)  obj.baseURL = settings.data.baseURL;
-                if(settings.data.headers)  obj.headers = settings.data.headers;
+                if(settings.baseURL)  axios.defaults.baseURL = settings.baseURL;
+                if(settings.headers)  axios.defaults.headers = settings.headers;
             }
-
-            axios.defaults.baseURL = obj.baseURL;
-            axios.defaults.headers = obj.headers;
         },
 
         /**

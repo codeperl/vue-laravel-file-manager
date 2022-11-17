@@ -5,8 +5,8 @@ let settings = localstore.getStorage(localstore.axiosSettingType);
 let obj = {};
 
 if(settings) {
-    if(settings.data.baseURL)  obj.baseURL = settings.data.baseURL;
-    if(settings.data.headers)  obj.headers = settings.data.headers;
+    if(settings.baseURL)  obj.baseURL = settings.baseURL;
+    if(settings.headers)  obj.headers = settings.headers;
 }
 
 // set new axios instance
