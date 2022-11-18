@@ -132,6 +132,7 @@ export default {
 
             if(settings) {
                 if(settings.baseURL)  HTTP.defaults.baseURL = settings.baseURL;
+                if(settings.withCredentials)  HTTP.defaults.withCredentials = settings.withCredentials;
                 if(settings.headers)  HTTP.defaults.headers = settings.headers;
             }
         },
