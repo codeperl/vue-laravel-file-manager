@@ -73,7 +73,7 @@ export default {
                     const mimeType = response.headers['content-type'].toLowerCase();
                     const imgBase64 = Buffer.from(response.data, 'binary').toString('base64');
 
-                    this.src = `data:${mimeType};base64,${imgBase64}`;
+                    this.src = `data:${mimeType};base64,${response.data}`;
                 });
             } else {
                 this.src = `${this.$store.getters['fm/settings/baseUrl']}thumbnails?disk=${
