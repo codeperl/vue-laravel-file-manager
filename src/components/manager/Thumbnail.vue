@@ -71,7 +71,7 @@ export default {
             if (this.auth) {
                 GET.thumbnail(this.disk, this.file.path).then((response) => {
                     const mimeType = response.headers['content-type'].toLowerCase();
-                    const imgBase64 = Buffer.from(response.data, 'binary').toString('base64');
+                    //const imgBase64 = Buffer.from(response.data, 'binary').toString('base64');
 
                     this.src = `data:${mimeType};base64,${response.data}`;
                 });
