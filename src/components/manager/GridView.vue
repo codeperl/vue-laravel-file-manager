@@ -34,6 +34,7 @@
                 v-on:dblclick="selectAction(file.path, file.extension)"
                 v-on:contextmenu.prevent="contextMenu(file, $event)"
             >
+                {{ files }}
                 <div class="fm-item-icon">
                     <i v-if="acl && file.acl === 0" class="bi bi-file-earmark-lock pb-2" />
                     <thumbnail v-else-if="thisImage(file.extension)" v-bind:disk="disk" v-bind:file="file"></thumbnail>
