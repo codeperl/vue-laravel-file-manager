@@ -10,4 +10,4 @@ if(settings) {
 }
 
 // set new axios instance
-export default axios;
+export default axios.create(settings);

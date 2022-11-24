@@ -131,9 +131,14 @@ export default {
             let settings = localstore.getStorage(localstore.axiosSettingType);
 
             if(settings) {
-                if(settings.baseURL)  HTTP.defaults.baseURL = settings.baseURL;
-                if(settings.withCredentials)  HTTP.defaults.withCredentials = settings.withCredentials;
-                if(settings.headers)  HTTP.defaults.headers = settings.headers;
+                HTTP.interceptors.request.use( async config => {
+                        config.baseURL = settings.baseURL;
+                        config.withCredentials = settings.withCredentials;
+                        config.headers = settings.headers;
+
+                        return config;
+                    }, error => Promise.reject(error)
+                );
             } else {
                 throw `settings.baseURL: ${settings.baseURL}, settings.withCredentials: ${settings.withCredentials}, settings.headers: ${settings.headers} is set!`;
             }
