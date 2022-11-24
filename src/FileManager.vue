@@ -87,12 +87,6 @@ export default {
     created() {
         // manual settings
         this.$store.commit('fm/settings/manualSettings', this.settings);
-        /**
-         * FIXME: Manual settings set the vuex settings store but to initiate axios, that value is not available
-         * in js files, I am using localstorage to manage those settings.
-         */
-        localstore.setStorage(localstore.axiosSettingType, this.settings);
-
         // initiate Axios
         this.$store.commit('fm/settings/initAxiosSettings');
         this.setAxiosConfig();
@@ -122,12 +116,18 @@ export default {
         }),
     },
     methods: {
+        storeAxiosConfig() {
+            localstore.setStorage(localstore.axiosSettingType, this.settings);
+        },
         /**
          * Axios default config
          */
         setAxiosConfig() {
-            // HTTP.defaults.baseURL = this.$store.getters['fm/settings/baseUrl'];
-            // HTTP.defaults.headers = this.$store.getters['fm/settings/headers'];
+            /** Original version **/
+            /*HTTP.defaults.baseURL = this.$store.getters['fm/settings/baseUrl'];
+            HTTP.defaults.headers = this.$store.getters['fm/settings/headers'];*/
+
+            /** Customized by Mohammad Ashrafuddin Ferdousi */
             let settings = localstore.getStorage(localstore.axiosSettingType);
 
             if(settings) {

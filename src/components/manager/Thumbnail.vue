@@ -70,10 +70,10 @@ export default {
             // if authorization required
             if (this.auth) {
                 GET.thumbnail(this.disk, this.file.path).then((response) => {
-                    const mimeType = response.headers['content-type'].toLowerCase();
+                    // FIXED: Mohammad Ashrafuddin Ferdousi
+                    const mimeType = response.data.headers['Content-Type'].toLowerCase();
                     //const imgBase64 = Buffer.from(response.data, 'binary').toString('base64');
-
-                    this.src = `data:${mimeType};base64,${response.data}`;
+                    this.src = `data:${mimeType};base64,${response.data.data}`;
                 });
             } else {
                 this.src = `${this.$store.getters['fm/settings/baseUrl']}thumbnails?disk=${
