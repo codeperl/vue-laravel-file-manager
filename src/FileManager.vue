@@ -133,10 +133,11 @@ export default {
             let settings = localstore.getStorage(localstore.axiosSettingType);
 
             if(settings) {
-                HTTP.interceptors.request.use( async config => {
+                HTTP.interceptors.request.use(config => {
                         config.baseURL = settings.baseURL;
                         config.withCredentials = settings.withCredentials;
                         config.headers = settings.headers;
+                        config.headers.common.Authorization = `Bearer ${window.localStorage.getItem('_token')}`;
 
                         return config;
                     }, error => Promise.reject(error)

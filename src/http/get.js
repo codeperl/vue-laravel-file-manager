@@ -1,13 +1,19 @@
 import HTTP from './axios';
 
 export default {
+    async getToken() {
+        return new Promise(resolve => {
+            resolve(window.localStorage.getItem('_token'));
+        });
+    },
     /**
      * Get configuration data from server
      * @returns {*}
      */
     // Mohammad Ashrafuddin Ferdousi : 1
-    initialize() {
-        return HTTP.get(`initialize?token=${window.localStorage.getItem('_token')}`);
+    async initialize() {
+        let token = await this.getToken();
+        return HTTP.get(`initialize?token=${token}`);
     },
 
     /**

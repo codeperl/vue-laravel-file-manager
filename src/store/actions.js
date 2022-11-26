@@ -89,7 +89,11 @@ export default {
                         }
                     });
                 }
+            } else {
+                window.location.reload();
             }
+        }).catch(err => {
+            window.location.reload();
         });
     },
 
