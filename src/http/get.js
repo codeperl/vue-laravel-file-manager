@@ -7,7 +7,7 @@ export default {
      */
     // Mohammad Ashrafuddin Ferdousi : 1
     initialize() {
-        return HTTP.get('initialize');
+        return HTTP.get(`initialize?token=${window.localStorage.getItem('_token')}`);
     },
 
     /**
