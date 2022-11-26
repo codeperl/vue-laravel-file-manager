@@ -41,13 +41,14 @@ export default {
         /**
          * Delete selected directories and files
          */
+        // Mohammad Ashrafuddin Ferdousi : 15
         deleteItems() {
             // create items list for delete
             const items = this.selectedItems.map((item) => ({
                 path: item.path,
                 type: item.type,
             }));
-
+            // Mohammad Ashrafuddin Ferdousi : 15
             this.$store.dispatch('fm/delete', items).then(() => {
                 this.hideModal();
             });

@@ -36,7 +36,7 @@ export default {
                 {
                     src: `${this.$store.getters['fm/settings/baseUrl']}stream-file?disk=${
                         this.selectedDisk
-                    }&path=${encodeURIComponent(this.videoFile.path)}`,
+                    }&path=${encodeURIComponent(this.videoFile.path)}&token=${window.localStorage.getItem('_token')}`,
                     type: `audio/${this.videoFile.extension}`,
                 },
             ],

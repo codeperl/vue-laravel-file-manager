@@ -72,7 +72,9 @@ export default {
         /**
          * Create new directory
          */
+        // Mohammad Ashrafuddin Ferdousi : 13
         addFolder() {
+            // Mohammad Ashrafuddin Ferdousi : 13
             this.$store.dispatch('fm/createDirectory', this.directoryName).then((response) => {
                 if (response.data.result.status === 'success') {
                     this.hideModal();

@@ -252,7 +252,9 @@ export default {
         /**
          * Refresh file manager
          */
+        // Mohammad Ashrafuddin Ferdousi : 2
         refreshAll() {
+            // Mohammad Ashrafuddin Ferdousi : 2
             this.$store.dispatch('fm/refreshAll');
         },
 
@@ -294,7 +296,9 @@ export default {
         /**
          * Paste
          */
+        // Mohammad Ashrafuddin Ferdousi : 17
         paste() {
+            // Mohammad Ashrafuddin Ferdousi : 17
             this.$store.dispatch('fm/paste');
         },
 

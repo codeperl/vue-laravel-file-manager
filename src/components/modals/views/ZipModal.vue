@@ -79,7 +79,9 @@ export default {
         /**
          * Create new archive
          */
+        // Mohammad Ashrafuddin Ferdousi : 18
         createArchive() {
+            // Mohammad Ashrafuddin Ferdousi : 18
             this.$store.dispatch('fm/zip', `${this.archiveName}.zip`).then(() => {
                 // close modal window
                 this.hideModal();

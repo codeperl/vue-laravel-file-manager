@@ -11,7 +11,10 @@ export default {
      * @param getters
      * @param dispatch
      */
+    // Mohammad Ashrafuddin Ferdousi : 1
+    // Mohammad Ashrafuddin Ferdousi : 2
     initializeApp({ state, commit, getters, dispatch }) {
+        // Mohammad Ashrafuddin Ferdousi : 1
         GET.initialize().then((response) => {
             if (response.data.result.status === 'success') {
                 commit('settings/initSettings', response.data.config);
@@ -78,6 +81,7 @@ export default {
                 } else if (state.settings.windowsConfig === 2) {
                     // if selected left manager and directories tree
                     // init directories tree
+                    // Mohammad Ashrafuddin Ferdousi : 2
                     dispatch('tree/initTree', leftDisk).then(() => {
                         if (leftPath) {
                             // reopen folders if path not null
@@ -96,7 +100,9 @@ export default {
      * @param disk
      * @param path
      */
+    // Mohammad Ashrafuddin Ferdousi : 4
     getLoadContent(context, { manager, disk, path }) {
+        // Mohammad Ashrafuddin Ferdousi : 4
         GET.content(disk, path).then((response) => {
             if (response.data.result.status === 'success') {
                 context.commit(`${manager}/setDirectoryContent`, response.data);
@@ -112,7 +118,11 @@ export default {
      * @param disk
      * @param manager
      */
+    // Mohammad Ashrafuddin Ferdousi : 3
+    // Mohammad Ashrafuddin Ferdousi : 2
     selectDisk({ state, commit, dispatch }, { disk, manager }) {
+        // Mohammad Ashrafuddin Ferdousi : 3
+        // Mohammad Ashrafuddin Ferdousi : 2
         GET.selectDisk(disk).then((response) => {
             // if disk exist => change disk
             if (response.data.result.status === 'success') {
@@ -124,6 +134,7 @@ export default {
 
                 // reinitialize tree if directories tree is shown
                 if (state.settings.windowsConfig === 2) {
+                    // Mohammad Ashrafuddin Ferdousi : 2
                     dispatch('tree/initTree', disk);
                 }
 
@@ -140,11 +151,13 @@ export default {
      * @param fileName
      * @returns {Promise}
      */
+    // Mohammad Ashrafuddin Ferdousi : 11
     createFile({ getters, dispatch }, fileName) {
         // directory for new file
         const selectedDirectory = getters.selectedDirectory;
 
         // create new file, server side
+        // Mohammad Ashrafuddin Ferdousi : 11
         return POST.createFile(getters.selectedDisk, selectedDirectory, fileName).then((response) => {
             // update file list
             dispatch('updateContent', {
@@ -165,6 +178,7 @@ export default {
      * @param path
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 6
     getFile(context, { disk, path }) {
         return GET.getFile(disk, path);
     },
@@ -176,7 +190,9 @@ export default {
      * @param formData
      * @returns {PromiseLike | Promise}
      */
+    // Mohammad Ashrafuddin Ferdousi : 12
     updateFile({ getters, dispatch }, formData) {
+        // Mohammad Ashrafuddin Ferdousi : 12
         return POST.updateFile(formData).then((response) => {
             // update file list
             dispatch('updateContent', {
@@ -197,11 +213,13 @@ export default {
      * @param name
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 13
     createDirectory({ getters, dispatch }, name) {
         // directory for new folder
         const selectedDirectory = getters.selectedDirectory;
 
         // create new directory, server side
+        // Mohammad Ashrafuddin Ferdousi : 13
         return POST.createDirectory({
             disk: getters.selectedDisk,
             path: selectedDirectory,
@@ -228,6 +246,7 @@ export default {
      * @param overwrite
      * @returns {Promise}
      */
+    // Mohammad Ashrafuddin Ferdousi : 14
     upload({ getters, commit, dispatch }, { files, overwrite }) {
         // directory where files will be uploaded
         const selectedDirectory = getters.selectedDirectory;
@@ -251,6 +270,7 @@ export default {
         };
 
         // upload files
+        // Mohammad Ashrafuddin Ferdousi : 14
         return POST.upload(data, config)
             .then((response) => {
                 // clear progress
@@ -275,7 +295,9 @@ export default {
      * @param items
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 15
     delete({ state, getters, dispatch }, items) {
+        // Mohammad Ashrafuddin Ferdousi : 15
         return POST.delete({
             disk: getters.selectedDisk,
             items,
@@ -302,7 +324,9 @@ export default {
      * @param getters
      * @param dispatch
      */
+    // Mohammad Ashrafuddin Ferdousi : 17
     paste({ state, commit, getters, dispatch }) {
+        // Mohammad Ashrafuddin Ferdousi : 17
         POST.paste({
             disk: getters.selectedDisk,
             path: getters.selectedDirectory,
@@ -329,7 +353,9 @@ export default {
      * @param oldName
      * @returns {Promise}
      */
+    // Mohammad Ashrafuddin Ferdousi : 16
     rename({ getters, dispatch }, { type, newName, oldName }) {
+        // Mohammad Ashrafuddin Ferdousi : 16
         return POST.rename({
             disk: getters.selectedDisk,
             newName,
@@ -353,6 +379,7 @@ export default {
      * @param path
      * @returns {Promise}
      */
+    // Mohammad Ashrafuddin Ferdousi : 5
     url(store, { disk, path }) {
         return GET.url(disk, path);
     },
@@ -365,9 +392,11 @@ export default {
      * @param name
      * @returns {*|PromiseLike<T | never>|Promise<T | never>}
      */
+    // Mohammad Ashrafuddin Ferdousi : 18
     zip({ state, getters, dispatch }, name) {
         const selectedDirectory = getters.selectedDirectory;
 
+        // Mohammad Ashrafuddin Ferdousi : 18
         return POST.zip({
             disk: getters.selectedDisk,
             path: selectedDirectory,
@@ -390,9 +419,11 @@ export default {
      * @param folder
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 19
     unzip({ getters, dispatch }, folder) {
         const selectedDirectory = getters.selectedDirectory;
 
+        // Mohammad Ashrafuddin Ferdousi : 19
         return POST.unzip({
             disk: getters.selectedDisk,
             path: getters.selectedItems[0].path,
@@ -455,9 +486,11 @@ export default {
      * @param dispatch
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 2
     refreshAll({ state, getters, dispatch }) {
         if (state.settings.windowsConfig === 2) {
             // refresh tree
+            // Mohammad Ashrafuddin Ferdousi : 2
             return dispatch('tree/initTree', state.left.selectedDisk).then(() =>
                 Promise.all([
                     // reopen folders if need
@@ -573,9 +606,10 @@ export default {
      * @param disk
      * @param path
      */
+    // Mohammad Ashrafuddin Ferdousi : 7
     openPDF(context, { disk, path }) {
         const win = window.open();
-
+        // Mohammad Ashrafuddin Ferdousi : 7
         GET.getFileArrayBuffer(disk, path).then((response) => {
             const blob = new Blob([response.data], { type: 'application/pdf' });
 

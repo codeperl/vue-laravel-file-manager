@@ -94,6 +94,8 @@ export default {
         this.responseInterceptor();
 
         // initialize app settings
+        // Mohammad Ashrafuddin Ferdousi : 1
+        // Mohammad Ashrafuddin Ferdousi : 2
         this.$store.dispatch('fm/initializeApp');
     },
     destroyed() {

@@ -70,7 +70,9 @@ export default {
         /**
          * Create new file
          */
+        // Mohammad Ashrafuddin Ferdousi : 11
         addFile() {
+            // Mohammad Ashrafuddin Ferdousi : 11
             this.$store.dispatch('fm/createFile', this.fileName).then((response) => {
                 if (response.data.result.status === 'success') {
                     this.hideModal();

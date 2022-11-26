@@ -64,8 +64,10 @@ export default {
         /**
          * Select file
          */
+        // Mohammad Ashrafuddin Ferdousi : 5
         selectAction() {
             // file callback
+            // Mohammad Ashrafuddin Ferdousi : 5
             this.$store
                 .dispatch('fm/url', {
                     disk: this.selectedDisk,
@@ -81,6 +83,7 @@ export default {
         /**
          * Download file
          */
+        // Mohammad Ashrafuddin Ferdousi : 10
         downloadAction() {
             const tempLink = document.createElement('a');
             tempLink.style.display = 'none';
@@ -88,6 +91,7 @@ export default {
 
             // download file with authorization
             if (this.$store.getters['fm/settings/authHeader']) {
+                // Mohammad Ashrafuddin Ferdousi : 10
                 HTTP.download(this.selectedDisk, this.selectedItems[0].path).then((response) => {
                     tempLink.href = window.URL.createObjectURL(new Blob([response.data]));
                     document.body.appendChild(tempLink);
@@ -134,8 +138,10 @@ export default {
         /**
          * Paste copied or cut items
          */
+        // Mohammad Ashrafuddin Ferdousi : 17
         pasteAction() {
             // paste items in the selected folder
+            // Mohammad Ashrafuddin Ferdousi : 17
             this.$store.dispatch('fm/paste');
         },
 

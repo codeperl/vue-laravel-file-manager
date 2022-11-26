@@ -43,8 +43,12 @@ export default {
          * Select disk
          * @param disk
          */
+        // Mohammad Ashrafuddin Ferdousi : 3
+        // Mohammad Ashrafuddin Ferdousi : 2
         selectDisk(disk) {
             if (this.selectedDisk !== disk) {
+                // Mohammad Ashrafuddin Ferdousi : 2
+                // Mohammad Ashrafuddin Ferdousi : 3
                 this.$store.dispatch('fm/selectDisk', {
                     disk,
                     manager: this.manager,

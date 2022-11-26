@@ -5,6 +5,7 @@ export default {
      * Get configuration data from server
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 1
     initialize() {
         return HTTP.get('initialize');
     },
@@ -15,7 +16,9 @@ export default {
      * @param path
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 2
     tree(disk, path) {
+        // Mohammad Ashrafuddin Ferdousi : 2
         return HTTP.get('tree', { params: { disk, path } });
     },
 
@@ -24,6 +27,7 @@ export default {
      * @param disk
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 3
     selectDisk(disk) {
         return HTTP.get('select-disk', { params: { disk } });
     },
@@ -34,6 +38,7 @@ export default {
      * @param path
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 4
     content(disk, path) {
         return HTTP.get('content', { params: { disk, path } });
     },
@@ -51,6 +56,7 @@ export default {
      * @param path
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 5
     url(disk, path) {
         return HTTP.get('url', { params: { disk, path } });
     },
@@ -61,6 +67,7 @@ export default {
      * @param path
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 6
     getFile(disk, path) {
         return HTTP.get('download', { params: { disk, path } });
     },
@@ -71,6 +78,7 @@ export default {
      * @param path
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 7
     getFileArrayBuffer(disk, path) {
         return HTTP.get('download', {
             responseType: 'arraybuffer',
@@ -84,6 +92,7 @@ export default {
      * @param path
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 8
     thumbnail(disk, path) {
         return HTTP.get('thumbnails', {
             responseType: 'arraybuffer',
@@ -97,6 +106,7 @@ export default {
      * @param path
      * @return {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 9
     preview(disk, path) {
         return HTTP.get('preview', {
             responseType: 'arraybuffer',
@@ -110,6 +120,7 @@ export default {
      * @param path
      * @return {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 10
     download(disk, path) {
         return HTTP.get('download', {
             responseType: 'arraybuffer',

@@ -8,6 +8,7 @@ export default {
      * @param name
      * @returns {Promise<AxiosResponse<any>>}
      */
+    // Mohammad Ashrafuddin Ferdousi : 11
     createFile(disk, path, name) {
         return HTTP.post('create-file', { disk, path, name });
     },
@@ -17,6 +18,7 @@ export default {
      * @param formData
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 12
     updateFile(formData) {
         return HTTP.post('update-file', formData);
     },
@@ -26,6 +28,7 @@ export default {
      * @param data
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 13
     createDirectory(data) {
         return HTTP.post('create-directory', data);
     },
@@ -36,6 +39,7 @@ export default {
      * @param config
      * @returns {Promise<AxiosResponse<any>>}
      */
+    // Mohammad Ashrafuddin Ferdousi : 14
     upload(data, config) {
         return HTTP.post('upload', data, config);
     },
@@ -45,6 +49,7 @@ export default {
      * @param data
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 15
     delete(data) {
         return HTTP.post('delete', data);
     },
@@ -54,6 +59,7 @@ export default {
      * @param data
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 16
     rename(data) {
         return HTTP.post('rename', data);
     },
@@ -63,6 +69,7 @@ export default {
      * @param data
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 17
     paste(data) {
         return HTTP.post('paste', data);
     },
@@ -72,6 +79,7 @@ export default {
      * @param data
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 18
     zip(data) {
         return HTTP.post('zip', data);
     },
@@ -81,6 +89,7 @@ export default {
      * @returns {*}
      * @param data
      */
+    // Mohammad Ashrafuddin Ferdousi : 19
     unzip(data) {
         return HTTP.post('unzip', data);
     },

@@ -63,6 +63,7 @@ export default {
     },
     mounted() {
         // get file for edit
+        // Mohammad Ashrafuddin Ferdousi : 6
         this.$store
             .dispatch('fm/getFile', {
                 disk: this.selectedDisk,
@@ -123,6 +124,7 @@ export default {
         /**
          * Update file
          */
+        // Mohammad Ashrafuddin Ferdousi : 12
         updateFile() {
             const formData = new FormData();
             // add disk name
@@ -132,6 +134,7 @@ export default {
             // add updated file
             formData.append('file', new Blob([this.editedCode]), this.selectedItem.basename);
 
+            // Mohammad Ashrafuddin Ferdousi : 12
             this.$store.dispatch('fm/updateFile', formData).then((response) => {
                 if (response.data.result.status === 'success') {
                     this.hideModal();

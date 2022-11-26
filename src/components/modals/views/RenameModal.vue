@@ -95,10 +95,11 @@ export default {
         /**
          * Rename item
          */
+        // Mohammad Ashrafuddin Ferdousi : 16
         rename() {
             // create new name with path
             const newName = this.selectedItem.dirname ? `${this.selectedItem.dirname}/${this.name}` : this.name;
-
+            // Mohammad Ashrafuddin Ferdousi : 16
             this.$store
                 .dispatch('fm/rename', {
                     type: this.selectedItem.type,

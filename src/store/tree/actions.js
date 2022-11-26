@@ -8,7 +8,9 @@ export default {
      * @param disk
      * @returns {Promise}
      */
+    // Mohammad Ashrafuddin Ferdousi : 2
     initTree({ state, commit }, disk) {
+        // Mohammad Ashrafuddin Ferdousi : 2
         return GET.tree(disk, null).then((response) => {
             // if the action was successful
             if (response.data.result.status === 'success') {
@@ -138,7 +140,9 @@ export default {
      * @param parentIndex
      * @returns {Promise}
      */
+    // Mohammad Ashrafuddin Ferdousi : 2
     getSubdirectories({ commit, rootGetters }, { path, parentId, parentIndex }) {
+        // Mohammad Ashrafuddin Ferdousi : 2
         return GET.tree(rootGetters['fm/selectedDisk'], path).then((response) => {
             // if the action was successful
             if (response.data.result.status === 'success') {
@@ -168,6 +172,7 @@ export default {
      * @param path
      * @returns {*}
      */
+    // Mohammad Ashrafuddin Ferdousi : 2
     showSubdirectories({ state, commit, getters, dispatch }, path) {
         const promise = Promise.resolve();
         // find parent directory index
@@ -185,6 +190,7 @@ export default {
                 });
             } else {
                 // load subdirectories
+                // Mohammad Ashrafuddin Ferdousi : 2
                 return dispatch('getSubdirectories', {
                     path: state.directories[parentDirectoryIndex].path,
                     parentId: state.directories[parentDirectoryIndex].id,
@@ -235,6 +241,7 @@ export default {
      * @param path
      * @returns {Promise<void>}
      */
+    // Mohammad Ashrafuddin Ferdousi : 2
     reopenPath({ dispatch }, path) {
         let promises = Promise.resolve();
 
@@ -242,6 +249,7 @@ export default {
             const splitPath = path.split('/');
 
             for (let i = 0; splitPath.length > i; i += 1) {
+                // Mohammad Ashrafuddin Ferdousi : 2
                 promises = promises.then(() => dispatch('showSubdirectories', splitPath.slice(0, i + 1).join('/')));
             }
 

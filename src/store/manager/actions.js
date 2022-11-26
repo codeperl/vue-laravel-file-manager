@@ -12,10 +12,13 @@ export default {
      * @param history
      * @returns {Promise}
      */
+    // Mohammad Ashrafuddin Ferdousi : 4
     selectDirectory({ state, commit, dispatch, rootState }, { path, history }) {
         // reset content
         commit('setDirectoryContent', { directories: [], files: [] });
 
+        // Mohammad Ashrafuddin Ferdousi : 4
+        // Mohammad Ashrafuddin Ferdousi : 2
         // get content for the selected directory
         return GET.content(state.selectedDisk, path).then((response) => {
             if (response.data.result.status === 'success') {
@@ -28,6 +31,7 @@ export default {
 
                 // if directories tree is shown, not main directory and directory have subdirectories
                 if (rootState.fm.settings.windowsConfig === 2 && path && response.data.directories.length) {
+                    // Mohammad Ashrafuddin Ferdousi : 2
                     dispatch('fm/tree/showSubdirectories', path, { root: true });
                 }
             }
@@ -40,7 +44,9 @@ export default {
      * @param commit
      * @param dispatch
      */
+    // Mohammad Ashrafuddin Ferdousi : 4
     refreshDirectory({ state, commit, dispatch }) {
+        // Mohammad Ashrafuddin Ferdousi : 4
         GET.content(state.selectedDisk, state.selectedDirectory).then((response) => {
             commit('resetSelected');
             commit('resetSortSettings');

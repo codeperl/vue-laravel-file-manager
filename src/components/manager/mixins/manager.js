@@ -146,9 +146,12 @@ export default {
          * @param path
          * @param extension
          */
+        // Mohammad Ashrafuddin Ferdousi : 7
+        // Mohammad Ashrafuddin Ferdousi : 5
         selectAction(path, extension) {
             // if is set fileCallback
             if (this.$store.state.fm.fileCallback) {
+                // Mohammad Ashrafuddin Ferdousi : 5
                 this.$store
                     .dispatch('fm/url', {
                         disk: this.selectedDisk,
@@ -195,6 +198,7 @@ export default {
                 });
             } else if (extension.toLowerCase() === 'pdf') {
                 // show pdf document
+                // Mohammad Ashrafuddin Ferdousi : 7
                 this.$store.dispatch('fm/openPDF', {
                     disk: this.selectedDisk,
                     path,

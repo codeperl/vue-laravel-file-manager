@@ -67,12 +67,14 @@ export default {
          * @param path
          * @param showState
          */
+        // Mohammad Ashrafuddin Ferdousi : 2
         showSubdirectories(path, showState) {
             if (showState) {
                 // hide
                 this.$store.dispatch('fm/tree/hideSubdirectories', path);
             } else {
                 // show
+                // Mohammad Ashrafuddin Ferdousi : 2
                 this.$store.dispatch('fm/tree/showSubdirectories', path);
             }
         },

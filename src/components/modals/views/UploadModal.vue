@@ -164,10 +164,12 @@ export default {
         /**
          * Upload new files
          */
+        // Mohammad Ashrafuddin Ferdousi : 14
         uploadFiles() {
             // if files exists
             if (this.countFiles) {
                 // upload files
+                // Mohammad Ashrafuddin Ferdousi : 14
                 this.$store
                     .dispatch('fm/upload', {
                         files: this.newFiles,

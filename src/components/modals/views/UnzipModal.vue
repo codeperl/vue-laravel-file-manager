@@ -105,7 +105,9 @@ export default {
         /**
          * Unpack selected archive
          */
+        // Mohammad Ashrafuddin Ferdousi : 19
         unpackArchive() {
+            // Mohammad Ashrafuddin Ferdousi : 19
             this.$store.dispatch('fm/unzip', this.createFolder ? this.directoryName : null).then(() => {
                 this.hideModal();
             });

@@ -234,6 +234,7 @@ export default {
         /**
          * Save cropped image
          */
+        // Mohammad Ashrafuddin Ferdousi : 12
         cropSave() {
             this.cropper.getCroppedCanvas().toBlob(
                 (blob) => {
@@ -245,6 +246,7 @@ export default {
                     // new image
                     formData.append('file', blob, this.selectedItem.basename);
 
+                    // Mohammad Ashrafuddin Ferdousi : 12
                     this.$store.dispatch('fm/updateFile', formData).then((response) => {
                         // if file updated successfully
                         if (response.data.result.status === 'success') {

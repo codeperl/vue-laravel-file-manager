@@ -66,10 +66,12 @@ export default {
         /**
          * Load image
          */
+        // Mohammad Ashrafuddin Ferdousi : 8
         loadImage() {
             // if authorization required
             if (this.auth) {
-                GET.thumbnail(this.disk, this.file.path).then((response) => {
+                // Mohammad Ashrafuddin Ferdousi : 8
+                GET.thumbnail(this.disk, `${this.file.path}&token=${window.localStorage.getItem('_token')}`).then((response) => {
                     // FIXED: Mohammad Ashrafuddin Ferdousi
                     const mimeType = response.data.headers['Content-Type'].toLowerCase();
                     //const imgBase64 = Buffer.from(response.data, 'binary').toString('base64');
@@ -78,7 +80,7 @@ export default {
             } else {
                 this.src = `${this.$store.getters['fm/settings/baseUrl']}thumbnails?disk=${
                     this.disk
-                }&path=${encodeURIComponent(this.file.path)}&v=${this.file.timestamp}`;
+                }&path=${encodeURIComponent(this.file.path)}&v=${this.file.timestamp}&token=${window.localStorage.getItem('_token')}`;
             }
         },
     },
