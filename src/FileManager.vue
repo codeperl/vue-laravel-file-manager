@@ -130,7 +130,8 @@ export default {
             HTTP.defaults.headers = this.$store.getters['fm/settings/headers'];*/
 
             /** Customized by Mohammad Ashrafuddin Ferdousi */
-            let settings = localstore.getStorage(localstore.axiosSettingType);
+            // Uncomment when needed.
+            /*let settings = localstore.getStorage(localstore.axiosSettingType);
 
             if(settings) {
                 HTTP.interceptors.request.use(config => {
@@ -144,7 +145,17 @@ export default {
                 );
             } else {
                 throw `settings.baseURL: ${settings.baseURL}, settings.withCredentials: ${settings.withCredentials}, settings.headers: ${settings.headers} is set!`;
-            }
+            }*/
+            // End of uncomment when needed.
+            HTTP.interceptors.request.use(config => {
+                    config.baseURL = this.$store.getters['fm/settings/baseUrl'];
+                    config.withCredentials = this.$store.getters['fm/settings/withCredentials'];
+                    config.headers = this.$store.getters['fm/settings/headers'];
+                    config.headers.common.Authorization = `Bearer ${window.localStorage.getItem('_token')}`;
+
+                    return config;
+                }, error => Promise.reject(error)
+            );
         },
 
         /**

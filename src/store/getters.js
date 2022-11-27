@@ -44,4 +44,13 @@ export default {
     inactiveManager(state) {
         return state.activeManager === 'left' ? 'right' : 'left';
     },
+
+    /**
+     *
+     * @param state
+     * @returns {boolean}
+     */
+    callInitTill(state) {
+        return state.initCallCount < 3;
+    }
 };

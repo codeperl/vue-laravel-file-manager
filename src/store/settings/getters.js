@@ -25,4 +25,8 @@ export default {
     authHeader(state) {
         return Object.prototype.hasOwnProperty.call(state.headers, 'Authorization');
     },
+
+    withCredentials(state) {
+        return state.withCredentials;
+    }
 };

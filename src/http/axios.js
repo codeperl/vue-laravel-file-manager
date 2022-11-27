@@ -1,5 +1,6 @@
 import axios from 'axios';
-import localstore from '../mixins/localstore';
+// Uncomment when needed.
+/*import localstore from '../mixins/localstore';
 
 let settings = localstore.getStorage(localstore.axiosSettingType);
 
@@ -10,4 +11,7 @@ if(settings) {
 }
 
 // set new axios instance
-export default axios.create(settings);
+export default axios.create(settings);*/
+// End of uncomment when needed.
+
+export default axios.create();

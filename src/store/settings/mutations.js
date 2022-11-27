@@ -76,6 +76,14 @@ export default {
                 }
             }
         }
+
+        if (state.withCredentials === false) {
+            if((import.meta.env.VITE_APP_LFM_WITH_CREDENTIALS !== undefined)) {
+                state.withCredentials = import.meta.env.VITE_APP_LFM_WITH_CREDENTIALS;
+            } else if((import.meta.env.VITE_LFM_CSRF_WITH_CREDENTIALS !== undefined)) {
+                state.withCredentials = import.meta.env.VITE_LFM_CSRF_WITH_CREDENTIALS;
+            }
+        }
     },
 
     /**

@@ -15,7 +15,8 @@ export default {
     // Mohammad Ashrafuddin Ferdousi : 2
     initializeApp({ state, commit, getters, dispatch }) {
         // Mohammad Ashrafuddin Ferdousi : 1
-        GET.initialize().then((response) => {
+        let init = GET.initialize();
+        init.then((response) => {
             if (response.data.result.status === 'success') {
                 commit('settings/initSettings', response.data.config);
                 commit('setDisks', response.data.config.disks);
@@ -89,11 +90,28 @@ export default {
                         }
                     });
                 }
-            } else {
+            }
+            else {
                 window.location.reload();
+                // Uncomment when needed.
+                /*if(getters.callInitTill) {
+                    setTimeout(() => {
+                        dispatch('initializeApp');
+                        commit('increaseInitCallCount');
+                    }, 1000);
+                }*/
+                // End of uncomment when needed.
             }
         }).catch(err => {
             window.location.reload();
+            // Uncomment when needed.
+            /*if(getters.callInitTill) {
+                setTimeout(() => {
+                    dispatch('initializeApp');
+                    commit('increaseInitCallCount');
+                }, 1000);
+            }*/
+            // End of uncomment when needed.
         });
     },
 

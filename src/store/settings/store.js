@@ -37,6 +37,9 @@ export default {
             // axios default URL
             baseUrl: null,
 
+            // axios default withCredentials
+            withCredentials: true,
+
             /**
              * File manager windows configuration
              * 1 - only one file manager window
