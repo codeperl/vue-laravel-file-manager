@@ -92,7 +92,12 @@ export default {
                 }
             }
             else {
-                window.location.reload();
+                if(getters.callInitTill) {
+                    setTimeout(() => {
+                        window.location.reload();
+                        commit('increaseInitCallCount');
+                    }, 1000);
+                }
                 // Uncomment when needed.
                 /*if(getters.callInitTill) {
                     setTimeout(() => {
@@ -103,7 +108,12 @@ export default {
                 // End of uncomment when needed.
             }
         }).catch(err => {
-            window.location.reload();
+            if(getters.callInitTill) {
+                setTimeout(() => {
+                    window.location.reload();
+                    commit('increaseInitCallCount');
+                }, 1000);
+            }
             // Uncomment when needed.
             /*if(getters.callInitTill) {
                 setTimeout(() => {

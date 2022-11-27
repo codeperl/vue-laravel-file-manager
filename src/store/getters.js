@@ -51,6 +51,6 @@ export default {
      * @returns {boolean}
      */
     callInitTill(state) {
-        return state.initCallCount < 3;
+        return state.initCallCount < 2;
     }
 };
