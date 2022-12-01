@@ -1,10 +1,18 @@
 <template>
-    <figure class="fm-thumbnail">
+    <!--<figure class="fm-thumbnail">
         <transition name="fade" mode="out-in">
             <i v-if="!src" class="far fa-file-image fa-5x pb-2" />
             <img v-else v-bind:src="src" v-bind:alt="file.filename" class="img-thumbnail" />
         </transition>
-    </figure>
+    </figure>-->
+    <div class="fm-thumbnail">
+        <transition name="fade" mode="out-in">
+            <div class="spinner-border spinner-border-lg text-muted my-2" v-if="!src">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <img v-else v-bind:src="src" v-bind:alt="file.filename" class="img-thumbnail" />
+        </transition>
+    </div>
 </template>
 
 <script>
@@ -31,7 +39,7 @@ export default {
         'file.timestamp': 'loadImage',
     },
     mounted() {
-        if (window.IntersectionObserver) {
+        /*if (window.IntersectionObserver) {
             const observer = new IntersectionObserver(
                 (entries, obs) => {
                     entries.forEach((entry) => {
@@ -51,7 +59,8 @@ export default {
             observer.observe(this.$el);
         } else {
             this.loadImage();
-        }
+        }*/
+        this.loadImage();
     },
     computed: {
         /**
@@ -71,16 +80,19 @@ export default {
             // if authorization required
             if (this.auth) {
                 // Mohammad Ashrafuddin Ferdousi : 8
-                GET.thumbnail(this.disk, `${this.file.path}&token=${window.localStorage.getItem('_token')}`).then((response) => {
+                GET.thumbnail(this.disk, this.file.path).then((response) => {
                     // FIXED: Mohammad Ashrafuddin Ferdousi
                     const mimeType = response.data.headers['Content-Type'].toLowerCase();
                     //const imgBase64 = Buffer.from(response.data, 'binary').toString('base64');
                     this.src = `data:${mimeType};base64,${response.data.data}`;
                 });
+                /*this.src = `${this.$store.getters['fm/settings/baseUrl']}thumbnails?disk=${
+                    this.disk
+                }&path=${encodeURIComponent(this.file.path)}&v=${this.file.timestamp}&token=${window.localStorage.getItem('_token')}`;*/
             } else {
                 this.src = `${this.$store.getters['fm/settings/baseUrl']}thumbnails?disk=${
                     this.disk
-                }&path=${encodeURIComponent(this.file.path)}&v=${this.file.timestamp}&token=${window.localStorage.getItem('_token')}`;
+                }&path=${encodeURIComponent(this.file.path)}&v=${this.file.timestamp}`;
             }
         },
     },

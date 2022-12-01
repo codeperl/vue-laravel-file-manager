@@ -92,8 +92,4 @@ export default {
         state.fileCallback = null;
         state.fullScreen = false;
     },
-
-    increaseInitCallCount(state) {
-        state.initCallCount++;
-    }
 };

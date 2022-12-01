@@ -132,17 +132,16 @@ export default {
             // if authorization required
             if (this.auth) {
                 // Mohammad Ashrafuddin Ferdousi : 9
-                GET.preview(this.selectedDisk, `${this.selectedItem.path}&token=${window.localStorage.getItem('_token')}`).then((response) => {
+                GET.preview(this.selectedDisk, this.selectedItem.path).then((response) => {
                     // FIXED: Mohammad Ashrafuddin Ferdousi
                     const mimeType = response.data.headers['Content-Type'].toLowerCase();
-                    // const imgBase64 = Buffer.from(response.data, 'binary').toString('base64');
-
+                    //const imgBase64 = Buffer.from(response.data, 'binary').toString('base64');
                     this.imgSrc = `data:${mimeType};base64,${response.data.data}`;
                 });
             } else {
                 this.imgSrc = `${this.$store.getters['fm/settings/baseUrl']}preview?disk=${
                     this.selectedDisk
-                }&path=${encodeURIComponent(this.selectedItem.path)}&v=${this.selectedItem.timestamp}&token=${window.localStorage.getItem('_token')}`;
+                }&path=${encodeURIComponent(this.selectedItem.path)}&v=${this.selectedItem.timestamp}`;
             }
         },
     },

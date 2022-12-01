@@ -2,9 +2,7 @@ import HTTP from './axios';
 
 export default {
     async getToken() {
-        return new Promise(resolve => {
-            resolve(window.localStorage.getItem('_token'));
-        });
+        return window.localStorage.getItem('_token');
     },
     /**
      * Get configuration data from server
@@ -13,7 +11,9 @@ export default {
     // Mohammad Ashrafuddin Ferdousi : 1
     async initialize() {
         let token = await this.getToken();
-        return HTTP.get(`initialize?token=${token}`);
+        HTTP.defaults.headers.Authorization = `Bearer ${token}`;
+
+        return HTTP.get('initialize');
     },
 
     /**
@@ -101,7 +101,7 @@ export default {
     // Mohammad Ashrafuddin Ferdousi : 8
     thumbnail(disk, path) {
         return HTTP.get('thumbnails', {
-            responseType: 'arraybuffer',
+            responseType: 'json',
             params: { disk, path },
         });
     },
@@ -115,7 +115,7 @@ export default {
     // Mohammad Ashrafuddin Ferdousi : 9
     preview(disk, path) {
         return HTTP.get('preview', {
-            responseType: 'arraybuffer',
+            responseType: 'json',
             params: { disk, path },
         });
     },

@@ -25,7 +25,4 @@ export default {
 
     // full screen mode
     fullScreen: false,
-
-    //initializeApp call count
-    initCallCount: 0,
 };

@@ -85,18 +85,27 @@ export default {
         };
     },
     created() {
-        // manual settings
-        this.$store.commit('fm/settings/manualSettings', this.settings);
-        // initiate Axios
-        this.$store.commit('fm/settings/initAxiosSettings');
-        this.setAxiosConfig();
-        this.requestInterceptor();
-        this.responseInterceptor();
-
-        // initialize app settings
-        // Mohammad Ashrafuddin Ferdousi : 1
-        // Mohammad Ashrafuddin Ferdousi : 2
-        this.$store.dispatch('fm/initializeApp');
+        new Promise(resolve => {
+            // manual settings
+            this.$store.commit('fm/settings/manualSettings', this.settings);
+            resolve();
+        }).then(() => {
+            // initiate Axios
+            this.$store.commit('fm/settings/initAxiosSettings');
+        }).then(() => {
+            this.setAxiosConfig();
+        }).then(() => {
+            this.requestInterceptor();
+        }).then(() => {
+            this.responseInterceptor();
+        }).then(() => {
+            // initialize app settings
+            // Mohammad Ashrafuddin Ferdousi : 1
+            // Mohammad Ashrafuddin Ferdousi : 2
+            this.$store.dispatch('fm/initializeApp');
+        }).catch(err => {
+            Promise.reject(err);
+        });
     },
     destroyed() {
         // reset state
@@ -118,44 +127,19 @@ export default {
         }),
     },
     methods: {
-        storeAxiosConfig() {
-            localstore.setStorage(localstore.axiosSettingType, this.settings);
-        },
         /**
          * Axios default config
          */
-        setAxiosConfig() {
-            /** Original version **/
-            /*HTTP.defaults.baseURL = this.$store.getters['fm/settings/baseUrl'];
-            HTTP.defaults.headers = this.$store.getters['fm/settings/headers'];*/
-
-            /** Customized by Mohammad Ashrafuddin Ferdousi */
-            // Uncomment when needed.
-            /*let settings = localstore.getStorage(localstore.axiosSettingType);
-
-            if(settings) {
-                HTTP.interceptors.request.use(config => {
-                        config.baseURL = settings.baseURL;
-                        config.withCredentials = settings.withCredentials;
-                        config.headers = settings.headers;
-                        config.headers.common.Authorization = `Bearer ${window.localStorage.getItem('_token')}`;
-
-                        return config;
-                    }, error => Promise.reject(error)
-                );
-            } else {
-                throw `settings.baseURL: ${settings.baseURL}, settings.withCredentials: ${settings.withCredentials}, settings.headers: ${settings.headers} is set!`;
-            }*/
-            // End of uncomment when needed.
-            HTTP.interceptors.request.use(config => {
-                    config.baseURL = this.$store.getters['fm/settings/baseUrl'];
-                    config.withCredentials = this.$store.getters['fm/settings/withCredentials'];
-                    config.headers = this.$store.getters['fm/settings/headers'];
-                    config.headers.common.Authorization = `Bearer ${window.localStorage.getItem('_token')}`;
-
-                    return config;
-                }, error => Promise.reject(error)
-            );
+        async setAxiosConfig() {
+            HTTP.defaults.baseURL = this.$store.getters['fm/settings/baseUrl'];
+            HTTP.defaults.withCredentials = this.$store.getters['fm/settings/withCredentials'];
+            HTTP.defaults.headers = this.$store.getters['fm/settings/headers'];
+            HTTP.defaults.headers.common = {};
+            HTTP.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+            let token = await new Promise(resolve => {
+                resolve(window.localStorage.getItem('_token'));
+            });
+            HTTP.defaults.headers.Authorization = `Bearer ${token}`;
         },
 
         /**
