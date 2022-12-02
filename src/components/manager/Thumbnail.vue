@@ -1,18 +1,12 @@
 <template>
-    <!--<figure class="fm-thumbnail">
-        <transition name="fade" mode="out-in">
-            <i v-if="!src" class="far fa-file-image fa-5x pb-2" />
-            <img v-else v-bind:src="src" v-bind:alt="file.filename" class="img-thumbnail" />
-        </transition>
-    </figure>-->
-    <div class="fm-thumbnail">
+    <figure class="fm-thumbnail">
         <transition name="fade" mode="out-in">
             <div class="spinner-border spinner-border-lg text-muted my-2" v-if="!src">
                 <span class="visually-hidden">Loading...</span>
             </div>
             <img v-else v-bind:src="src" v-bind:alt="file.filename" class="img-thumbnail" />
         </transition>
-    </div>
+    </figure>
 </template>
 
 <script>
@@ -39,28 +33,34 @@ export default {
         'file.timestamp': 'loadImage',
     },
     mounted() {
-        /*if (window.IntersectionObserver) {
-            const observer = new IntersectionObserver(
-                (entries, obs) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            this.loadImage();
-                            obs.unobserve(this.$el);
-                        }
-                    });
-                },
-                {
-                    root: null,
-                    threshold: '0.5',
-                }
-            );
+        if (window.IntersectionObserver) {
+            try {
+                const observer = new IntersectionObserver(
+                    (entries, obs) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                this.loadImage();
+                                obs.unobserve(this.$el);
+                            }
+                        });
+                    },
+                    {
+                        root: null,
+                        /*threshold: '0.5',*/
+                        threshold: '0.1',
+                    }
+                );
 
-            // add observer for template
-            observer.observe(this.$el);
+                // add observer for template
+                observer.observe(this.$el);
+            } catch(e) {
+                this.loadImage();
+            }
+
         } else {
             this.loadImage();
-        }*/
-        this.loadImage();
+        }
+        //this.loadImage();
     },
     computed: {
         /**
